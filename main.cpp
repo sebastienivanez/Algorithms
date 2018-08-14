@@ -44,17 +44,11 @@ int main()
 void test_quick_find()
 {
   QuickFind qf(10);
-  bool reply;
+  int cost = 0;
 
   qf.connect(4, 3);
-  qf.connect(3, 8);
-  qf.connect(6, 5);
-  qf.connect(9, 4);
-  qf.connect(2, 1);
-  reply = qf.connected(0, 7);
-  cout << "qf.connected(0, 7) = " << reply << endl;
-  reply = qf.connected(8, 9);
-  cout << "qf.connected(8, 9) = " << reply << endl;
+  cost = qf.getCost();
+  cout << "qf cost = " << cost << endl;
 }
 
 /*!
@@ -65,17 +59,11 @@ void test_quick_find()
 void test_quick_union()
 {
   QuickUnion qu(10);
-  bool reply;
+  int cost = 0;
 
   qu.connect(4, 3);
-  qu.connect(3, 8);
-  qu.connect(6, 5);
-  qu.connect(9, 4);
-  qu.connect(2, 1);
-  reply = qu.connected(0, 7);
-  cout << "qu.connected(0, 7) = " << reply << endl;
-  reply = qu.connected(8, 9);
-  cout << "qu.connected(8, 9) = " << reply << endl;
+  cost = qu.getCost();
+  cout << "qu cost = " << cost << endl;
 }
 
 /*!
@@ -86,15 +74,9 @@ void test_quick_union()
 void test_quick_union_improved()
 {
   QuickUnionImproved qui(10);
-  bool reply;
+  int cost = 0;
 
   qui.connect(4, 3);
-  qui.connect(3, 8);
-  qui.connect(6, 5);
-  qui.connect(9, 4);
-  qui.connect(2, 1);
-  reply = qui.connected(0, 7);
-  cout << "qui.connected(0, 7) = " << reply << endl;
-  reply = qui.connected(8, 9);
-  cout << "qui.connected(8, 9) = " << reply << endl;
+  cost = qui.getCost();
+  cout << "qui cost = " << cost << endl;
 }

@@ -30,6 +30,7 @@ QuickUnionImproved::QuickUnionImproved(int N) {
   for (int i = 0; i < N; i++) {
     this->id[i] = i;
     this->size[i] = 1;
+    this->cost++;
   }
 }
 
@@ -49,8 +50,11 @@ QuickUnionImproved::~QuickUnionImproved() {
  * \date    14/08/2018
  */
 int QuickUnionImproved::root(int p) {
-  while (p != this->id[p])
+  while (p != this->id[p]) {
+    this->id[p] = this->id[this->id[p]]; // Extra line to improve cost of algorithm
     p = this->id[p];
+    this->cost++;
+  }
     
   return p;
 }

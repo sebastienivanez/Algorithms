@@ -21,6 +21,7 @@
 class QuickUnionImproved {
   int *id; // Id of object
   int *size; // Size of connected component
+  int cost; // Calculate number of iteration for cost
 
   int root(int p); // Private method only accessible by class methods
 
@@ -30,6 +31,7 @@ class QuickUnionImproved {
     ~QuickUnionImproved();
 
     // Set/Get methods
+    int getCost() {return cost;}
 
     // Other methods
     void connect(int p, int q);

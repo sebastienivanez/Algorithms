@@ -27,8 +27,10 @@ QuickFind::QuickFind(int N) {
   this->id = new int[N];
   this->size = N;
 
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     this->id[i] = i; // Set id of each objects to itself
+    this->cost++;
+  }
 }
 
 /*!
@@ -49,9 +51,12 @@ void QuickFind::connect(int p, int q) {
   int pid = this->id[p];
   int qid = this->id[q];
 		
-  for (int i = 0; i < this->size; i++)
-    if (this->id[i] == pid)
+  for (int i = 0; i < this->size; i++) {
+    this->cost++;
+    if (this->id[i] == pid) {
       this->id[i] = qid; // Change all entries with id[p] to id[q]
+    }
+  }
 }
 
 /*!

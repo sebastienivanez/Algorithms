@@ -21,6 +21,7 @@
 class QuickFind {
   int *id; // Id of object
   int size; // Number of objects
+  int cost; // Calculate number of iteration for cost
 
   public:
     // Constructors
@@ -28,6 +29,7 @@ class QuickFind {
     ~QuickFind();
 
     // Set/Get methods
+    int getCost() {return cost;}
 
     // Other methods
     void connect(int p, int q);

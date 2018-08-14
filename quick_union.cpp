@@ -26,8 +26,10 @@ using namespace std;
 QuickUnion::QuickUnion(int N) {
   this->id = new int[N];
 
-  for (int i = 0; i < N; i++)
+  for (int i = 0; i < N; i++) {
     this->id[i] = i;
+    this->cost++;
+  }
 }
 
 /*!
@@ -45,8 +47,10 @@ QuickUnion::~QuickUnion() {
  * \date    14/08/2018
  */
 int QuickUnion::root(int p) {
-  while (p != this->id[p])
+  while (p != this->id[p]) {
     p = this->id[p];
+    this->cost++;
+  }
     
   return p;
 }

@@ -20,6 +20,7 @@
  */
 class QuickUnion {
   int *id; // Id of object
+  int cost; // Calculate number of iteration for cost
 
   int root(int p); // Private method only accessible by class methods
 
@@ -29,6 +30,7 @@ class QuickUnion {
     ~QuickUnion();
 
     // Set/Get methods
+    int getCost() {return cost;}
 
     // Other methods
     void connect(int p, int q);
