@@ -11,14 +11,14 @@
 //#include <stdint.h> // To use uint8_t
 //#include <stdlib.h> // To call malloc()/sleep()
 //#include <unistd.h> // To call read()
-#include "union_find.cpp"
 #include "quick_find.cpp"
 #include "quick_union.cpp"
+#include "quick_union_improved.cpp"
 
 /* MACROS */
-void test_union_find();
 void test_quick_find();
 void test_quick_union();
+void test_quick_union_improved();
 
 /*! \namespace std */
 using namespace std;
@@ -30,31 +30,10 @@ using namespace std;
  */
 int main() 
 {
-  test_union_find();
   test_quick_find();
   test_quick_union();
+  test_quick_union_improved();
   return 0;
-}
-
-/*!
- * \details Test for union find algorithm from coursera
- * \author  Sebastien Ivanez
- * \date    14/08/2018
- */
-void test_union_find()
-{
-  UnionFind uf(10);
-  bool reply;
-
-  uf.connect(4, 3);
-  uf.connect(3, 8);
-  uf.connect(6, 5);
-  uf.connect(9, 4);
-  uf.connect(2, 1);
-  reply = uf.connected(0, 7);
-  cout << "uf.connected(0, 7) = " << reply << endl;
-  reply = uf.connected(8, 9);
-  cout << "uf.connected(8, 9) = " << reply << endl;
 }
 
 /*!
@@ -79,7 +58,7 @@ void test_quick_find()
 }
 
 /*!
- * \details Test for quick find algorithm from coursera
+ * \details Test for quick union algorithm from coursera
  * \author  Sebastien Ivanez
  * \date    14/08/2018
  */
@@ -97,4 +76,25 @@ void test_quick_union()
   cout << "qu.connected(0, 7) = " << reply << endl;
   reply = qu.connected(8, 9);
   cout << "qu.connected(8, 9) = " << reply << endl;
+}
+
+/*!
+ * \details Test for quick union improved algorithm from coursera
+ * \author  Sebastien Ivanez
+ * \date    14/08/2018
+ */
+void test_quick_union_improved()
+{
+  QuickUnionImproved qui(10);
+  bool reply;
+
+  qui.connect(4, 3);
+  qui.connect(3, 8);
+  qui.connect(6, 5);
+  qui.connect(9, 4);
+  qui.connect(2, 1);
+  reply = qui.connected(0, 7);
+  cout << "qui.connected(0, 7) = " << reply << endl;
+  reply = qui.connected(8, 9);
+  cout << "qui.connected(8, 9) = " << reply << endl;
 }

@@ -6,33 +6,33 @@
  *   . Connect/Union command: connect two objects
  *   . Connected/Find query: Is there a path connecting the two objects ?
  */
-#ifndef _UNION_FIND_H
-#define _UNION_FIND_H
+#ifndef _QUICK_UNION_IMPROVED_H
+#define _QUICK_UNION_IMPROVED_H
    
 /* INCLUDES */
 
 /* MACROS */
 
 /*!
- * \details class
+ * \details Class QuickUnionImproved
  * \author  Sebastien Ivanez
  * \date    14/08/2018
  */
-class UnionFind {
+class QuickUnionImproved {
   int *id; // Id of object
-  int *cc_size; // Size of connected component
-  int nb_cc; // Number of connected components
+  int *size; // Size of connected component
 
-  int find(int p); // Private method only accessible by class methods
+  int root(int p); // Private method only accessible by class methods
 
   public:
     // Constructors
-    UnionFind(int N);
-    ~UnionFind();
+    QuickUnionImproved(int N);
+    ~QuickUnionImproved();
+
+    // Set/Get methods
 
     // Other methods
     void connect(int p, int q);
     bool connected(int p, int q);
-    int count();
 };
 #endif

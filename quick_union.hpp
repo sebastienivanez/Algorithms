@@ -20,7 +20,6 @@
  */
 class QuickUnion {
   int *id; // Id of object
-  int size; // Number of objects
 
   int root(int p); // Private method only accessible by class methods
 
