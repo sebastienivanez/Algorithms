@@ -3,8 +3,8 @@
  *
  * Problem:
  *   Given a set of N objects.
- *   . Union command: connect two objects
- *   . Find/connected query: Is there a path connecting the two objects ?
+ *   . Connect/Union command: connect two objects
+ *   . Connected/Find query: Is there a path connecting the two objects ?
  */
 #ifndef _QUICK_FIND_H
 #define _QUICK_FIND_H
@@ -30,7 +30,7 @@ class QuickFind {
     // Set/Get methods
 
     // Other methods
-    void connect(int x, int y);
-    bool connected(int x, int y);
+    void connect(int p, int q);
+    bool connected(int p, int q);
 };
 #endif

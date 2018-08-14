@@ -13,10 +13,12 @@
 //#include <unistd.h> // To call read()
 #include "union_find.cpp"
 #include "quick_find.cpp"
+#include "quick_union.cpp"
 
 /* MACROS */
 void test_union_find();
 void test_quick_find();
+void test_quick_union();
 
 /*! \namespace std */
 using namespace std;
@@ -30,6 +32,7 @@ int main()
 {
   test_union_find();
   test_quick_find();
+  test_quick_union();
   return 0;
 }
 
@@ -73,4 +76,25 @@ void test_quick_find()
   cout << "qf.connected(0, 7) = " << reply << endl;
   reply = qf.connected(8, 9);
   cout << "qf.connected(8, 9) = " << reply << endl;
+}
+
+/*!
+ * \details Test for quick find algorithm from coursera
+ * \author  Sebastien Ivanez
+ * \date    14/08/2018
+ */
+void test_quick_union()
+{
+  QuickUnion qu(10);
+  bool reply;
+
+  qu.connect(4, 3);
+  qu.connect(3, 8);
+  qu.connect(6, 5);
+  qu.connect(9, 4);
+  qu.connect(2, 1);
+  reply = qu.connected(0, 7);
+  cout << "qu.connected(0, 7) = " << reply << endl;
+  reply = qu.connected(8, 9);
+  cout << "qu.connected(8, 9) = " << reply << endl;
 }

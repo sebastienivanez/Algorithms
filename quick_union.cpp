@@ -11,7 +11,7 @@
 //#include <stdint.h> // To use uint8_t
 //#include <stdlib.h> // To call malloc()/sleep()
 //#include <unistd.h> // To call read()
-#include "quick_find.hpp"
+#include "quick_union.hpp"
 
 /* MACROS */
 
@@ -19,25 +19,37 @@
 using namespace std;
 
 /*!
- * \details Constructor of QuickFind class containing N objects
+ * \details Constructor of QuickUnion class containing N objects. Set id of each objects to itself.
  * \author  Sebastien Ivanez
  * \date    14/08/2018
  */
-QuickFind::QuickFind(int N) {
+QuickUnion::QuickUnion(int N) {
   this->id = new int[N];
   this->size = N;
 
   for (int i = 0; i < N; i++)
-    this->id[i] = i; // Set id of each objects to itself
+    this->id[i] = i;
 }
 
 /*!
- * \details Destructor of QuickFind class
+ * \details Destructor of QuickUnion class
  * \author  Sebastien Ivanez
  * \date    14/08/2018
  */
-QuickFind::~QuickFind() {
+QuickUnion::~QuickUnion() {
   delete [] this->id;
+}
+
+/*!
+ * \details Chase parent pointers until reach root
+ * \author  Sebastien Ivanez
+ * \date    14/08/2018
+ */
+int QuickUnion::root(int p) {
+  while (p != this->id[p])
+    p = this->id[p];
+    
+  return p;
 }
 
 /*!
@@ -45,20 +57,18 @@ QuickFind::~QuickFind() {
  * \author  Sebastien Ivanez
  * \date    14/08/2018
  */
-void QuickFind::connect(int p, int q) {
-  int pid = this->id[p];
-  int qid = this->id[q];
-		
-  for (int i = 0; i < this->size; i++)
-    if (this->id[i] == pid)
-      this->id[i] = qid; // Change all entries with id[p] to id[q]
+void QuickUnion::connect(int p, int q) {
+  int i = root(this->id[p]);
+  int j = root(this->id[q]);
+	
+	this->id[i] = j; // Change root of p to point to root of q
 }
 
 /*!
- * \details Return true if objects p and q are connected
+ * \details Return true if objects p and q are connected.
  * \author  Sebastien Ivanez
  * \date    14/08/2018
  */
-bool QuickFind::connected(int p, int q) {
-  return this->id[p] == this->id[q]; // check wether p and q are in the same component
+bool QuickUnion::connected(int p, int q) {
+  return (root(this->id[p]) == root(this->id[q])); // Check if p and q have the same root
 }
