@@ -50,19 +50,19 @@ UnionFind::~UnionFind() {
  * \date    14/08/2018
  */
 int UnionFind::find(int x) {
-  int id_tmp = x;
+  int x_tmp = x;
 
-  while (id_tmp != (this->id[id_tmp]))
-    id_tmp = this->id[id_tmp];
+  while (x_tmp != (this->id[x_tmp]))
+    x_tmp = this->id[x_tmp];
 
-  while (x != id_tmp) {
-    int x_tmp = this->id[x];
+  while (x != x_tmp) {
+    int xid = this->id[x];
 
-    this->id[x] = id_tmp;
-    x = x_tmp;
+    this->id[x] = x_tmp;
+    x = xid;
   }
 
-  return id_tmp;
+  return x_tmp;
 }
 
 /*!
@@ -71,19 +71,19 @@ int UnionFind::find(int x) {
  * \date    14/08/2018
  */
 void UnionFind::connect(int x, int y) {
-  int i = find(x);
-  int j = find(y);
+  int xid = find(x);
+  int yid = find(y);
 
-  if (i == j)
+  if (xid == yid)
     return;
 		
   // make smaller root point to larger one
-  if (this->cc_size[i] < this->cc_size[j]) { 
-		this->id[i] = j; 
-		this->cc_size[j] += this->cc_size[i]; 
+  if (this->cc_size[xid] < this->cc_size[yid]) { 
+		this->id[xid] = yid; 
+		this->cc_size[yid] += this->cc_size[xid]; 
 	} else {
-		this->id[j] = i; 
-		this->cc_size[i] += this->cc_size[j]; 
+		this->id[yid] = xid; 
+		this->cc_size[xid] += this->cc_size[yid]; 
 	}
 
   this->nb_cc--;
@@ -95,7 +95,7 @@ void UnionFind::connect(int x, int y) {
  * \date    14/08/2018
  */
 bool UnionFind::connected(int x, int y) {
-  return find(x) == find(y);
+  return (find(x) == find(y));
 }
 
 /*!

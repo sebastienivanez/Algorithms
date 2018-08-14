@@ -12,9 +12,11 @@
 //#include <stdlib.h> // To call malloc()/sleep()
 //#include <unistd.h> // To call read()
 #include "union_find.cpp"
+#include "quick_find.cpp"
 
 /* MACROS */
 void test_union_find();
+void test_quick_find();
 
 /*! \namespace std */
 using namespace std;
@@ -27,6 +29,7 @@ using namespace std;
 int main() 
 {
   test_union_find();
+  test_quick_find();
   return 0;
 }
 
@@ -49,4 +52,25 @@ void test_union_find()
   cout << "uf.connected(0, 7) = " << reply << endl;
   reply = uf.connected(8, 9);
   cout << "uf.connected(8, 9) = " << reply << endl;
+}
+
+/*!
+ * \details Test for quick find algorithm from coursera
+ * \author  Sebastien Ivanez
+ * \date    14/08/2018
+ */
+void test_quick_find()
+{
+  QuickFind qf(10);
+  bool reply;
+
+  qf.connect(4, 3);
+  qf.connect(3, 8);
+  qf.connect(6, 5);
+  qf.connect(9, 4);
+  qf.connect(2, 1);
+  reply = qf.connected(0, 7);
+  cout << "qf.connected(0, 7) = " << reply << endl;
+  reply = qf.connected(8, 9);
+  cout << "qf.connected(8, 9) = " << reply << endl;
 }
