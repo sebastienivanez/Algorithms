@@ -11,9 +11,9 @@
 //#include <stdint.h> // To use uint8_t
 //#include <stdlib.h> // To call malloc()/sleep()
 //#include <unistd.h> // To call read()
-#include "quick_find.cpp"
-#include "quick_union.cpp"
-#include "quick_union_improved.cpp"
+#include "quick_find.hpp"
+#include "quick_union.hpp"
+#include "quick_union_improved.hpp"
 
 /* MACROS */
 void test_quick_find();
